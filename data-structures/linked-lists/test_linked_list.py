@@ -1,0 +1,1 @@
+def test_insert_first_node(empty_ll)

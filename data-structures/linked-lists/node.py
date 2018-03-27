@@ -3,5 +3,5 @@ class Node:
         self.val = val
         self._next = next
 
-    def __str__(self, val):
-        return self.val
+    def __repr__(self, val):
+        return '{val}'.format(val=self.val)
