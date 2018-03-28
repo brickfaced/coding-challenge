@@ -8,14 +8,20 @@ class LinkedList:
         """
         self.head = None
         self._size = 0
+        if type(iter) not in [str, tuple, list]:
+            raise TypeError('Please pass an iterable.')
+        for item in reversed(iter):
+            self.insert(item)
 
     def __repr__(self):
         """
         Displays the head of the linked list
         """
+        if self.head is None:
+            return 'List is empty'
         return 'head => {}'.format(self.head.val)
 
-    def __len__(self):
+    def len(self):
         """
         Displays the size of the linked list
         """

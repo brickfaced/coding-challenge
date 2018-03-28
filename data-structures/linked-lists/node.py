@@ -1,6 +1,6 @@
 class Node:
     """
-    Create a Node to be inserted into our linked lit
+    Create a Node to be inserted into our linked list
     """
     def __init__(self, val, next=None):
         """
