@@ -1,4 +1,5 @@
 from linked_list import LinkedList as LL
+from node import Node
 import pytest
 
 
@@ -47,3 +48,16 @@ def test_insert_after(predefined_ll):
     assert predefined_ll.head._next.val == 2
     predefined_ll.insert_after(1, 11)
     assert predefined_ll.head._next.val == 11
+
+
+def test_kth_from_end(predefined_ll):
+    """"
+    Testing to check when k is greater than length
+    of linked list to raise a ValueError
+    """
+    with pytest.raises(ValueError):
+        predefined_ll.kth_from_end(11)
+    """
+    Testing to see if I get correct value
+    """
+    assert predefined_ll.kth_from_end(8).val == 2
