@@ -104,3 +104,6 @@ class LinkedList:
             current = current._next
             counter += 1
         return current
+
+    def find_loop(self):
+        pass

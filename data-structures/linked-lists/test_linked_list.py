@@ -60,3 +60,7 @@ def test_kth_from_end(predefined_ll):
     Testing to see if I get correct value
     """
     assert predefined_ll.kth_from_end(8).val == 2
+
+
+def test_find_loop(predefined_ll):
+    pass
