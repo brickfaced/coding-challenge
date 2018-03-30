@@ -90,3 +90,17 @@ class LinkedList:
 
         current._next = Node(val, current._next)
         self._size += 1
+
+    def kth_from_end(self, k):
+        """
+        Returns the node at "k"s distance from the end of the linked list
+        """
+        if k > self.len():
+            raise ValueError('k exceeds the length of this linked list')
+
+        current = self.head
+        counter = 0
+        while counter != self.len() - (k + 1):
+            current = current._next
+            counter += 1
+        return current
