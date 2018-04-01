@@ -1,5 +1,4 @@
 from linked_list import LinkedList as LL
-from node import Node
 import pytest
 
 
@@ -27,10 +26,10 @@ def test_append_node_on_empty(empty_ll):
 
 def test_append_node_on_ll(predefined_ll):
     assert predefined_ll.find(11) is False
-    assert predefined_ll.len() == 10
+    assert len(predefined_ll) == 10
     predefined_ll.append(11)
     assert predefined_ll.find(11) is True
-    assert predefined_ll.len() == 11
+    assert len(predefined_ll) == 11
 
 
 def test_nonvalue_as_argument(empty_ll):
@@ -61,3 +60,12 @@ def test_kth_from_end(predefined_ll):
     Testing to see if I get correct value
     """
     assert predefined_ll.kth_from_end(8).val == 2
+
+
+def test_find_loop(predefined_ll):
+    assert predefined_ll.find_loop() is False
+
+
+def test_find_loop_on_empty_ll(empty_ll):
+    with pytest.raises(ValueError):
+        empty_ll.find_loop()

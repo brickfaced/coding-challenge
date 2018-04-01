@@ -23,7 +23,7 @@ class LinkedList:
 
         return 'head => {}'.format(self.head.val)
 
-    def len(self):
+    def __len__(self):
         """
         Displays the size of the linked list
         """
@@ -95,12 +95,28 @@ class LinkedList:
         """
         Returns the node at "k"s distance from the end of the linked list
         """
-        if k > self.len():
+        if k > len(self):
             raise ValueError('k exceeds the length of this linked list')
 
         current = self.head
         counter = 0
-        while counter != self.len() - (k + 1):
+        while counter != len(self) - (k + 1):
             current = current._next
             counter += 1
         return current
+
+    def find_loop(self):
+        if self.head is None:
+            raise ValueError('Make sure linked list has nodes')
+
+        current = self.head
+        counter = 0
+
+        while current._next:
+            if counter > len(self):
+                return True
+
+            current = current._next
+            counter += 1
+
+        return False
