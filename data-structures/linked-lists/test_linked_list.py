@@ -63,4 +63,9 @@ def test_kth_from_end(predefined_ll):
 
 
 def test_find_loop(predefined_ll):
-    pass
+    assert predefined_ll.find_loop() is False
+
+
+def test_find_loop_on_empty_ll(empty_ll):
+    with pytest.raises(ValueError):
+        empty_ll.find_loop()
