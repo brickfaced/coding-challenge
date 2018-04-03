@@ -15,4 +15,4 @@ def merge_lists(ll_one, ll_two):
         current_one = current_one._next._next
         current_two = current_two._next
 
-    return ll_one
+    return ll_two
