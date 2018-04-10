@@ -1,6 +1,7 @@
 from .bst import BST
 import pytest
 from .fizzbuzztree import fizzbuzztree
+from .breadth_first_traversal import breadth_first_traversal as bft
 
 
 def test_insert_iterable(predefined_bst):
@@ -40,3 +41,9 @@ def test_fizzbuzztree(predefined_bst_two):
     predefined_bst_two.in_order(fizzbuzztree)
     predefined_bst_two.in_order(lambda n: post_fizzbuzz.append(n.val))
     assert post_fizzbuzz == [1, 2, 'Fizz', 4, 'Buzz', 'FizzBuzz', 'FizzBuzz']
+
+
+def test_breadth_first_traversal(unbalanced_bst):
+    assert bft(unbalanced_bst) == [15, 6, 23, 4, 7, 71, 5, 50]
+    unbalanced_bst.insert(40)
+    assert bft(unbalanced_bst) == [15, 6, 23, 4, 7, 71, 5, 50, 40]
