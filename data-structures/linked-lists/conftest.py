@@ -10,3 +10,13 @@ def empty_ll():
 @pytest.fixture
 def predefined_ll():
     return LL([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+
+@pytest.fixture
+def predefined_ll_two():
+    return LL([1, 2, 3, 4, 5])
+
+
+@pytest.fixture
+def predefined_ll_three():
+    return LL([6, 7, 8, 9])
