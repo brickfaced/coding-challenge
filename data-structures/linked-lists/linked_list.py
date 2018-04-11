@@ -104,3 +104,19 @@ class LinkedList:
             current = current._next
             counter += 1
         return current
+
+    def find_loop(self):
+        if self.head is None:
+            raise ValueError('Make sure linked list has nodes')
+
+        current = self.head
+        counter = 0
+
+        while current._next:
+            if counter > len(self):
+                return True
+
+            current = current._next
+            counter += 1
+
+        return False

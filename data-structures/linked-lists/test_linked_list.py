@@ -60,3 +60,12 @@ def test_kth_from_end(predefined_ll):
     Testing to see if I get correct value
     """
     assert predefined_ll.kth_from_end(8).val == 2
+
+
+def test_find_loop(predefined_ll):
+    assert predefined_ll.find_loop() is False
+
+
+def test_find_loop_on_empty_ll(empty_ll):
+    with pytest.raises(ValueError):
+        empty_ll.find_loop()
