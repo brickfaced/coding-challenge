@@ -2,6 +2,7 @@ from .bst import BST
 import pytest
 from .fizzbuzztree import fizzbuzztree
 from .breadth_first_traversal import breadth_first_traversal as bft
+from .find_maximum_value_binary_tree import find_maximum_value as fxm
 
 
 def test_insert_iterable(predefined_bst):
@@ -47,3 +48,11 @@ def test_breadth_first_traversal(unbalanced_bst):
     assert bft(unbalanced_bst) == [15, 6, 23, 4, 7, 71, 5, 50]
     unbalanced_bst.insert(40)
     assert bft(unbalanced_bst) == [15, 6, 23, 4, 7, 71, 5, 50, 40]
+
+
+def test_find_maximum_value(unbalanced_bst):
+    assert fxm(unbalanced_bst) == 71
+    unbalanced_bst.insert(72)
+    assert fxm(unbalanced_bst) == 72
+    unbalanced_bst.insert(1000)
+    assert fxm(unbalanced_bst) == 1000
