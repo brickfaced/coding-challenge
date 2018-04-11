@@ -16,12 +16,21 @@ class LinkedList:
 
     def __repr__(self):
         """
-        Displays the head of the linked list
+        Returns a string that contains the value of the top of the stack
         """
-        if self.head is None:
-            return 'List is empty'
+        if self._size == 0:
+            return 'Linked List is empty'
 
-        return 'head => {}'.format(self.head.val)
+        return 'Head is {}'.format(self.head.val)
+
+    def __str__(self):
+        """
+        Returns the value of the top of the stack
+        """
+        if self._size == 0:
+            return 'Linked List is empty'
+
+        return self.top.val
 
     def __len__(self):
         """

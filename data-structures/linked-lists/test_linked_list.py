@@ -1,4 +1,5 @@
 from linked_list import LinkedList as LL
+from ll_merge import merge_lists
 import pytest
 
 
@@ -69,3 +70,11 @@ def test_find_loop(predefined_ll):
 def test_find_loop_on_empty_ll(empty_ll):
     with pytest.raises(ValueError):
         empty_ll.find_loop()
+
+
+def test_merge_lists(predefined_ll_two, predefined_ll_three):
+    assert predefined_ll_two.head._next.val == 2
+    assert len(predefined_ll_two) == 5
+    merge_lists(predefined_ll_two, predefined_ll_three)
+    assert predefined_ll_two.head._next.val == 6
+    assert len(predefined_ll_two) == 9
