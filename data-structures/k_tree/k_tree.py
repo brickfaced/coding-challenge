@@ -1,11 +1,10 @@
-
 class Node:
-    def __init__(self, val, children=[]):
+    def __init__(self, val):
         """
         Instantiates a node for KTree
         """
         self.val = val
-        self.children = children
+        self.children = []
 
     def __repr__(self):
         """
@@ -39,8 +38,24 @@ class KTree:
         """
         return self.root.val
 
-    def insert(self, parent, val):
-        pass
+    def insert(self, child, parent=None):
+        """
+        Gives a child a parent, very heartwarming stuff here
+        """
+        self._parent = None
+        node = Node(child)
+        if self.root is None:
+            self.root = node
+            return
+
+        def find_parent(current):
+            if current is None:
+                return
+            if current.val == parent:
+                self._parent = current
+
+        self.pre_order(find_parent)
+        self._parent.children.append(node)
 
     def pre_order(self, operation):
         """
@@ -52,11 +67,8 @@ class KTree:
 
             operation(node)
 
-            if node.left is not None:
-                _walk(node.left)
-
-            if node.right is not None:
-                _walk(node.right)
+            for children in node.children:
+                _walk(children)
 
         _walk(self.root)
 
@@ -68,30 +80,28 @@ class KTree:
             if node is None:
                 return
 
-            if node.left is not None:
-                _walk(node.left)
-
-            if node.right is not None:
-                _walk(node.right)
+            for children in node.children:
+                _walk(children)
 
             operation(node)
 
         _walk(self.root)
 
-    def breadth_first_traversal(self):
+    def breadth_first_traversal(self, operation):
         """
         Traverses through the KTree breadth first
         """
-        nodes = [self.root]
-        output = []
-        while len(nodes):
-            new_nodes = []
-            for node in nodes:
-                if node is None:
-                    continue
+        parents = []
+        current = self.root
+        parents.append(current)
+        while current:
+            for nodes in current.children:
+                parents.append(nodes)
 
-                new_nodes.extend((node.left, node.right))
-                print(node.val)
-                output.append(node.val)
-            nodes = new_nodes
-        return output
+            operation(current)
+            parents.pop(0)
+
+            if parents == []:
+                break
+
+            current = parents[0]
