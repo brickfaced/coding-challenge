@@ -55,16 +55,16 @@ class LinkedList:
     def find(self, val):
         """
         Takes in a value and searches for it inside the linked list and
-        returns True if it is found and False if not
+        returns the Node if it exists
         """
         current = self.head
         while current:
             if val == current.val:
-                return True
+                return current
 
             current = current._next
 
-        return False
+        return 'Not in Linked List'
 
     def append(self, val):
         """
