@@ -23,15 +23,18 @@ class HashTable:
         return self.buckets[self.hash_key(key)].insert({key: val})
 
     def get(self, key):
+        if self.buckets[self.hash_key(key)] is None:
+            return 'No Key Found'
+
         if len(self.buckets[self.hash_key(key)]) > 1:
             return self.buckets[self.hash_key(key)].find(key)
 
-        return self.buckets[self.hash_key(key)]
+        return self.buckets[self.hash_key(key)].head.val
 
     def remove(self, key):
         if len(self.buckets[self.hash_key(key)]) > 1:
             temp = self.buckets[self.hash_key(key)].find(key)
-            self.buckets[self.hash_key(key)].find(key).val = None
+            self.buckets[self.hash_key(key)].remove(key)
             return temp
 
         temp = self.buckets[self.hash_key(key)]

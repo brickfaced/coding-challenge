@@ -66,6 +66,19 @@ class LinkedList:
 
         return 'Not in Linked List'
 
+    def remove(self, val):
+        """Takes in a value and searches for it and removes it in the end"""
+        current = self.head
+        while current:
+            if val == current.val:
+                temp = current
+                current = None
+                return temp
+
+            current = current._next
+
+        return 'Not in Linked List'
+
     def append(self, val):
         """
         Inserts value to end of linked list
