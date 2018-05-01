@@ -3,10 +3,12 @@ from linked_list import LinkedList as LL
 
 class HashTable:
     def __init__(self, max_size=1024):
+        """Instantiates a Hash Table"""
         self.max_size = max_size
         self.buckets = [LL() for _ in range(self.max_size)]
 
     def hash_key(self, key):
+        """Hashes the the inserted key for a unique value"""
         if type(key) is not str:
             raise TypeError
 
@@ -23,20 +25,23 @@ class HashTable:
         return self.buckets[self.hash_key(key)].insert({key: val})
 
     def get(self, key):
-        if self.buckets[self.hash_key(key)] is None:
-            return 'No Key Found'
+        current = self.buckets[self.hash_key(key)].head
+        while current:
+            if key in current.val:
+                return current.val[key]
 
-        if len(self.buckets[self.hash_key(key)]) > 1:
-            return self.buckets[self.hash_key(key)].find(key)
+            current._next
 
-        return self.buckets[self.hash_key(key)].head.val
+        return 'Key Not Found'
 
     def remove(self, key):
-        if len(self.buckets[self.hash_key(key)]) > 1:
-            temp = self.buckets[self.hash_key(key)].find(key)
-            self.buckets[self.hash_key(key)].remove(key)
-            return temp
+        current = self.buckets[self.hash_key(key)].head
+        while current:
+            if key in current.val:
+                temp = current
+                self.buckets[self.hash_key(key)].head = None
+                return temp
 
-        temp = self.buckets[self.hash_key(key)]
-        self.buckets[self.hash_key(key)] = None
-        return temp
+            current._next
+
+        return 'Key Not Found'

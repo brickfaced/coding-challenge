@@ -15,14 +15,14 @@ def test_ht_get():
     get method"""
     ramon = HT()
     ramon._set('ramon', 1)
-    assert ramon.get('ramon') == {'ramon': 1}
+    assert ramon.get('ramon') == 1
     ramon._set('mendoza', 2)
-    assert ramon.get('mendoza') == {'mendoza': 2}
+    assert ramon.get('mendoza') == 2
 
 
 def test_ht_remove():
     ramon = HT()
     ramon._set('ramon', 1)
-    assert ramon.get('ramon') == {'ramon': 1}
+    assert ramon.get('ramon') == 1
     ramon.remove('ramon')
-    assert ramon.get('ramon') == 'No Key Found'
+    assert ramon.get('ramon') == 'Key Not Found'
