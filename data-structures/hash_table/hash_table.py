@@ -18,21 +18,26 @@ class HashTable:
 
         return sum % len(self.buckets)
 
-    def _set(self, key, val):
+    def set(self, key, val):
         if self.buckets[self.hash_key(key)]:
-            return self.buckets[self.hash_key(key)].append({key: val})
+            return self.buckets[self.hash_key(key)].insert({key: val})
 
         return self.buckets[self.hash_key(key)].insert({key: val})
 
     def get(self, key):
         current = self.buckets[self.hash_key(key)].head
+        # import pdb; pdb.set_trace()
+        values = []
         while current:
             if key in current.val:
-                return current.val[key]
+                values.append(current.val[key])
 
-            current._next
+            current = current._next
 
-        return 'Key Not Found'
+        if values == []:
+            return 'Key Not Found'
+
+        return values
 
     def remove(self, key):
         current = self.buckets[self.hash_key(key)].head
