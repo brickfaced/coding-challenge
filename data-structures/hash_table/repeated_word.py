@@ -18,9 +18,9 @@ def repeated_word(text):
     words = text.split(' ')
     word_hasher = HashTable()
     for word in words:
-        if word_hasher.get(word) == word:
+        if word_hasher.get(word) == [word]:
             return word
 
-        word_hasher._set(word, word)
+        word_hasher.set(word, word)
 
     return 'There are no repeated words'
